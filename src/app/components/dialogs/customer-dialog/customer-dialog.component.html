@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>{{ header }}</span>
+</mat-toolbar>
+<div class="container">
+  <form [formGroup]="addCustomerForm">
+
+    <mat-form-field>
+      <input matInput placeholder="Customer Name" formControlName="id">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Phone Number" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Address" formControlName="mobile">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Customer Name" formControlName="address">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">Add Customer</button>
+    <button mat-raised-button color="warn">Cancel</button>
+  </form>
+</div>
