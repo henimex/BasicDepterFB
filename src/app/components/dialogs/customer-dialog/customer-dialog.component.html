@@ -5,22 +5,18 @@
   <form [formGroup]="addCustomerForm">
 
     <mat-form-field>
-      <input matInput placeholder="Customer Name" formControlName="id">
+      <input matInput placeholder="Customer Name" formControlName="name">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Phone Number" formControlName="name">
+      <input matInput placeholder="Phone Number" formControlName="mobile">
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Address" formControlName="mobile">
+      <input matInput placeholder="Address" formControlName="address">
     </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Customer Name" formControlName="address">
-    </mat-form-field>
-
-    <button mat-raised-button color="primary">Add Customer</button>
-    <button mat-raised-button color="warn">Cancel</button>
+    <button mat-raised-button color="primary" (click)="this.dialogRef.close(addCustomerForm.value)">Add Customer</button>
+    <button mat-raised-button color="warn" (click)="this.dialogRef.close()">Cancel</button>
   </form>
 </div>

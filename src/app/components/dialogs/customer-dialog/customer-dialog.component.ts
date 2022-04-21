@@ -18,7 +18,13 @@ export class CustomerDialogComponent implements OnInit {
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<CustomerDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {  }
+  ) {
+    if (this.data.operation == "Add Data"){
+      this.customer = new Customer();
+    } else {
+      this.customer = this.data.customer
+    }
+  }
 
   ngOnInit(): void {
     this.createForm();

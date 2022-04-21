@@ -15,7 +15,9 @@ export class FireStoreApiService {
   }
 
   getCustomers() {
-    return this.apiService.collection(this.collectionName).snapshotChanges();
+    const data = this.apiService.collection(this.collectionName).snapshotChanges();
+    console.log(data);
+    return data;
   }
 
   getCustomerById(customerId: string) {

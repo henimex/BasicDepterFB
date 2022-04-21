@@ -15,6 +15,7 @@ export class CustomersComponent implements OnInit {
   customers: Customer[];
   dataSource: any;
   displayedColumns = ['Name', 'Mobile', 'Address', 'Actions']
+
   //dialogRef: MatDialogRef<CustomerDialogComponent>
 
   constructor(
@@ -24,6 +25,7 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getCustomers();
   }
 
   getCustomers() {
@@ -38,12 +40,34 @@ export class CustomersComponent implements OnInit {
     })
   }
 
-  addCustomer(){
+  addCustomer() {
     const dialogRef = this.matDialog.open(CustomerDialogComponent, {
       width: '500px',
-      data:{
-        operation:'Add Data'
+      data: {
+        operation: 'Add Data'
       }
+    });
+    dialogRef.afterClosed().subscribe((data: Customer) => {
+      this.fsService.addCustomer(data).then( e => {
+        this.getCustomers();
+      })
+    })
+  }
+
+  editCustomer(customer: Customer){
+    const dialogRef = this.matDialog.open(CustomerDialogComponent, {
+      width: '500px',
+      data: {
+        operation: 'Update Data',
+        editCustomer: customer
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((data: Customer) => {
+      console.log(data)
+      this.fsService.updateCustomer(data).then( e => {
+        this.getCustomers();
+      })
     })
   }
 
